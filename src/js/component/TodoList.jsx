@@ -60,6 +60,8 @@ const TodoList = () => {
         })
     };
 
+
+
     const deleteAll = () => {
         fetch('https://playground.4geeks.com/apis/fake/todos/user/dsmora', {
             method: 'PUT',
