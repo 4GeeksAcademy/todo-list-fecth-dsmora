@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
 
-
+const makeRandomId = (length) => {
+    let result = ''
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+}
 //create your first component
 const TodoList = () => {
     const [tasks, setTasks] = useState(null);
+    const [input, setInput] = useState({});
 
-    [tarea, tarea2]; 
+    [tarea, tarea2];
 
     const getTasks = () => {
         fetch('https://playground.4geeks.com/apis/fake/todos/user/dsmora', {
@@ -62,12 +70,15 @@ const TodoList = () => {
         })
     }
 
+
+
+
     return (
         <div className="text-center">
             <h1>
                 Mi lista de tareas
             </h1>
-            <input />
+            <input onChange={(e) => saveInput(e.target.value)} onKeyDown={(e) => updateTasks(e)} />
             {tasks && tasks.length > 0 && (
                 <ul>
                     {
